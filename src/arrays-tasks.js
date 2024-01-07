@@ -660,8 +660,24 @@ function sortDigitNamesByNumericOrder(arr) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const middleIndex = Math.floor(arr.length / 2);
+  const result = [];
+
+  if (arr.length === 1) {
+    return arr;
+  }
+
+  if (arr.length % 2 === 0) {
+    result.push(arr.slice(middleIndex));
+    result.push(arr.slice(0, middleIndex));
+  } else {
+    result.push(arr.slice(middleIndex + 1));
+    result.push(arr.at(middleIndex));
+    result.push(arr.slice(0, middleIndex));
+  }
+
+  return result.flat();
 }
 
 module.exports = {
