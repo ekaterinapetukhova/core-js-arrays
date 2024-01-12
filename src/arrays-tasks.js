@@ -276,8 +276,18 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size) {
+  const arr = Array(size).fill(0);
+  const indexies = Array.from({ length: n - 1 }, (_, index) => index).sort(
+    (a, b) => b - a
+  );
+
+  indexies.reduce((acc) => {
+    acc.fill([...acc]);
+    return acc;
+  }, arr);
+
+  return arr;
 }
 
 /**
